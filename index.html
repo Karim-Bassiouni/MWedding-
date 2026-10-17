@@ -195,6 +195,27 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .reply textarea{width:100%;min-height:120px;border:1px solid #d6c8b4;border-radius:14px;background:#fffdf9;padding:13px 15px;font:inherit;font-size:16px;color:var(--ink);line-height:1.7;text-align:start}
 .reply .note{color:var(--ink-dim);font-size:15px}
 .reply a.btn{text-decoration:none;display:inline-block}
+
+/* Developer credit badge */
+.dev-credit {
+  margin-top: 32px;
+  padding: 12px 18px;
+  background: rgba(19, 35, 26, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  display: inline-block;
+  font-size: 14px;
+  color: var(--ivory-dim);
+}
+.dev-credit b {
+  color: var(--gold);
+}
+.dev-credit a {
+  color: var(--blush);
+  text-decoration: none;
+  font-weight: bold;
+}
+
 footer.end{padding:48px 0 calc(56px + env(safe-area-inset-bottom,0px));text-align:center}
 footer.end .names2{font-family:var(--disp);font-size:34px;color:var(--ivory)}
 html[lang="en"] footer.end .names2{font-style:italic}
@@ -350,6 +371,11 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
   <footer class="end rise">
     <p class="names2" data-t="footNames"></p>
     <p class="d">24 · 10 · 2026</p>
+    
+    <!-- Developer Credential Footnote -->
+    <div class="dev-credit">
+      تصميم وتطوير: <b>م. كريم محمد بسيوني</b> | <a href="tel:01062311669">01062311669</a>
+    </div>
   </footer>
 </main>
 
@@ -360,13 +386,14 @@ var $=function(s,r){return (r||document).querySelector(s)};
 var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* Target WhatsApp Number updated to +20 11 20703855 */
 var EVENT={
   startISO:"2026-10-24T20:00:00+03:00",
   calDates:"20261024T200000/20261025T000000",
   time:{ar:"الساعة ٨:٠٠ مساءً",en:"8:00 PM"},
   venue:{ar:"قاعة النخيل",en:"Al Nakheel Hall, Palm Village"},
   mapUrl:"https://maps.app.goo.gl/xE4QfCoVfSwzrzQN6",
-  whatsapp:["201062311669"]
+  whatsapp:["201120703855"]
 };
 
 var T={
@@ -764,7 +791,7 @@ function buildReply(){
   lastMsg=T[lang].msg({name:name,att:attending(),n:num(guests),note:note});
   $("#replyText").value=lastMsg;
   var share=$("#waShareLink");
-  share.href="https://wa.me/201062311669?text="+encodeURIComponent(lastMsg);
+  share.href="https://wa.me/201120703855?text="+encodeURIComponent(lastMsg);
   share.textContent=T[lang].waShare;
 }
 $("#rsvpForm").addEventListener("submit",function(e){
