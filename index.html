@@ -194,10 +194,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .stepper button:hover{background:#f3e9da}
 .stepper output{min-width:54px;text-align:center;font-size:20px;font-variant-numeric:tabular-nums}
 .err{color:#9a2c43;font-size:15px;min-height:1.4em}
-.reply{display:grid;gap:14px;text-align:center}
-.reply textarea{width:100%;min-height:120px;border:1px solid #d6c8b4;border-radius:14px;background:#fffdf9;padding:13px 15px;font:inherit;font-size:16px;color:var(--ink);line-height:1.7;text-align:start}
-.reply .note{color:var(--ink-dim);font-size:15px}
-.reply a.btn{text-decoration:none;display:inline-block}
+.reply{display:grid;gap:14px;text-align:center;padding:20px 0}
+.reply .success-msg{font-size:22px;font-weight:bold;color:var(--ink)}
 footer.end{padding:48px 0 calc(56px + env(safe-area-inset-bottom,0px));text-align:center}
 footer.end .names2{font-family:var(--disp);font-size:34px;color:var(--ivory)}
 html[lang="en"] footer.end .names2{font-style:italic}
@@ -215,7 +213,7 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
 @media (max-width:380px){.rw{grid-template-columns:1fr;gap:2px}.cd b{font-size:26px}}
 </style>
 
-<audio id="song" src="./song.mp3" loop preload="metadata"></audio>
+<audio id="song" src="song.mp3" loop preload="metadata"></audio>
 <canvas class="fx" id="petals" aria-hidden="true"></canvas>
 <canvas class="fx" id="burst" aria-hidden="true"></canvas>
 
@@ -258,7 +256,7 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
 <!-- 3. invitation -->
 <main id="invite" hidden>
   <section class="sec" style="padding-top:12px">
-    <div class="arch ha ha1"><img src="./img/g4.jpg" alt="" data-alt="1"></div>
+    <div class="arch ha ha1"><img src="g4.jpg" alt="" data-alt="1"></div>
     <p class="invite-line ha ha2" data-t="inviteLine"></p>
     <h2 class="names ha ha2" style="margin-top:4px"><span class="nm" data-t="groom"></span><span class="amp">&amp;</span><span class="nm" data-t="bride"></span></h2>
     <p class="hero-date ha ha3" data-t="fullDate"></p>
@@ -293,11 +291,11 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
     <p class="h-sub" data-t="galSub"></p>
     <div class="gal" id="gal">
       <div class="track" id="track" tabindex="0">
-        <figure class="slide"><div class="bgi" style="background-image:url(./img/g1.jpg)"></div><img src="./img/g1.jpg" alt="" data-alt="1" loading="lazy"></figure>
-        <figure class="slide"><div class="bgi" style="background-image:url(./img/g2.jpg)"></div><img src="./img/g2.jpg" alt="" data-alt="2" loading="lazy"></figure>
-        <figure class="slide"><div class="bgi" style="background-image:url(./img/g3.jpg)"></div><img src="./img/g3.jpg" alt="" data-alt="3" loading="lazy"></figure>
-        <figure class="slide"><div class="bgi" style="background-image:url(./img/g4.jpg)"></div><img src="./img/g4.jpg" alt="" data-alt="4" loading="lazy"></figure>
-        <figure class="slide"><div class="bgi" style="background-image:url(./img/g5.jpg)"></div><img src="./img/g5.jpg" alt="" data-alt="5" loading="lazy"></figure>
+        <figure class="slide"><div class="bgi" style="background-image:url(g1.jpg)"></div><img src="g1.jpg" alt="" data-alt="1" loading="lazy"></figure>
+        <figure class="slide"><div class="bgi" style="background-image:url(g2.jpg)"></div><img src="g2.jpg" alt="" data-alt="2" loading="lazy"></figure>
+        <figure class="slide"><div class="bgi" style="background-image:url(g3.jpg)"></div><img src="g3.jpg" alt="" data-alt="3" loading="lazy"></figure>
+        <figure class="slide"><div class="bgi" style="background-image:url(g4.jpg)"></div><img src="g4.jpg" alt="" data-alt="4" loading="lazy"></figure>
+        <figure class="slide"><div class="bgi" style="background-image:url(g5.jpg)"></div><img src="g5.jpg" alt="" data-alt="5" loading="lazy"></figure>
       </div>
       <button class="nav prev" id="prev" type="button" data-aria="prevLabel"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
       <button class="nav next" id="next" type="button" data-aria="nextLabel"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
@@ -334,17 +332,11 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
           <textarea class="in" id="rsvp-msg" name="msg" maxlength="300"></textarea>
         </div>
         <p class="err" id="rsvpErr" role="alert"></p>
-        <button class="btn dark" type="submit" data-t="prepare"></button>
+        <button class="btn dark" type="submit" data-t="prepare">إرسال الرسالة</button>
       </form>
       <div class="reply" id="reply" hidden>
-        <p data-t="replyIntro"></p>
-        <textarea id="replyText" readonly aria-label="message"></textarea>
-        <div class="row-btns" id="waLinks">
-          <a class="btn dark sm" id="waShareLink" target="_blank" rel="noopener" data-t="waShare"></a>
-          <button class="btn light sm" id="copyBtn" type="button" data-t="copy"></button>
-        </div>
-        <p class="note" data-t="replyNote"></p>
-        <button class="link" id="editBtn" type="button" style="color:var(--ink-dim)" data-t="edit"></button>
+        <p class="success-msg">تم الإرسال بنجاح! ❤️</p>
+        <p>شكراً لمشاركتك فرحتنا، سعداء جداً بتواصلك معنا.</p>
       </div>
     </div>
   </section>
@@ -362,24 +354,14 @@ var $=function(s,r){return (r||document).querySelector(s)};
 var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ==== EDIT HERE: event details (change the text between the quotes only) ====
-   startISO : date and time of the wedding for the countdown (Cairo time, +03:00)
-   time     : time shown on the page (Arabic / English)
-   venue    : venue shown on the page (Arabic / English)
-   mapUrl   : Google Maps link
-   whatsapp : Set the single WhatsApp destination with country code, digits only (no + or spaces).
-              Order: your number, bride's number, groom's number. Numbers are not printed on the page.
-   calDates : same moment for the "add to calendar" button (YYYYMMDDTHHMMSS/YYYYMMDDTHHMMSS) */
 var EVENT={
   startISO:"2026-10-24T20:00:00+03:00",
   calDates:"20261024T200000/20261025T000000",
   time:{ar:"الساعة ٨:٠٠ مساءً",en:"8:00 PM"},
   venue:{ar:"قاعة النخيل",en:"Al Nakheel Hall, Palm Village"},
-  mapUrl:"https://maps.app.goo.gl/xE4QfCoVfSwzrzQN6",
-  whatsapp:["201062311669"]
+  mapUrl:"https://maps.app.goo.gl/xE4QfCoVfSwzrzQN6"
 };
 
-/* ---- copy ---- */
 var T={
  ar:{
   eyebrow:"دعوة زفاف",groom:"مصطفى",bride:"رانيا",
@@ -400,19 +382,11 @@ var T={
   galH:"لحظاتنا",galSub:"بعض من أجمل ما جمعنا",galAlt:"صورة ",
   rsvpH:"تأكيد الحضور",rsvpSub:"يسعدنا أن نعرف إن كنتم ستشاركوننا هذا اليوم.",
   fName:"الاسم",fAttend:"هل ستحضر؟",yes:"نعم، سأحضر بإذن الله",no:"أعتذر، لن أتمكن من الحضور",
-  fGuests:"عدد الحضور (شاملاً حضرتك)",fMsg:"كلمة للعروسين (اختياري)",prepare:"جهّز ردّي",
+  fGuests:"عدد الحضور (شاملاً حضرتك)",fMsg:"كلمة للعروسين (اختياري)",prepare:"إرسال الرسالة",
   errName:"اكتب اسمك من فضلك.",
-  replyIntro:"جهّزنا ردّك. اضغط الزر لإرساله عبر واتساب.",
-  waYou:"إرسال لي",waBride:"إرسال للعروسة",waGroom:"إرسال للعريس",waShare:"مشاركة الرد عبر واتساب",copy:"انسخ الرسالة",copied:"تم النسخ",copyManual:"حدّد النص وانسخه",
-  replyNote:"لن يصلنا ردّك إلا بعد أن تضغط إرسال داخل واتساب.",edit:"تعديل الرد",
   footNames:"مصطفى ورانيا",
   musicLabel:"تشغيل أو إيقاف الموسيقى",prevLabel:"الصورة السابقة",nextLabel:"الصورة التالية",langBtn:"EN",
-  calTitle:"زفاف مصطفى ورانيا",calText:"دعوة لحضور زفاف مصطفى ورانيا",
-  msg:function(o){
-    var d="السبت ٢٤ أكتوبر ٢٠٢٦";
-    var s=o.att?("السلام عليكم، أنا "+o.name+". يسعدني تأكيد حضوري لزفاف مصطفى ورانيا يوم "+d+" (عدد الحضور: "+o.n+")."):("السلام عليكم، أنا "+o.name+". أعتذر لعدم تمكني من حضور زفاف مصطفى ورانيا يوم "+d+"، وأتمنى لكما حياة سعيدة.");
-    return s+(o.note?"\n"+o.note:"");
-  }
+  calTitle:"زفاف مصطفى ورانيا",calText:"دعوة لحضور زفاف مصطفى ورانيا"
  },
  en:{
   eyebrow:"Wedding invitation",groom:"Mostafa",bride:"Rania",
@@ -433,27 +407,18 @@ var T={
   galH:"Our Moments",galSub:"A few of our favourites",galAlt:"Photo ",
   rsvpH:"RSVP",rsvpSub:"We would love to know if you will join us.",
   fName:"Your name",fAttend:"Will you attend?",yes:"Joyfully accepting",no:"Regretfully declining",
-  fGuests:"Number of guests (including you)",fMsg:"A note for the couple (optional)",prepare:"Prepare my reply",
+  fGuests:"Number of guests (including you)",fMsg:"A note for the couple (optional)",prepare:"Send Message",
   errName:"Please enter your name.",
-  replyIntro:"Your reply is ready. Tap the button to send it on WhatsApp.",
-  waYou:"Send to me",waBride:"Send to the bride",waGroom:"Send to the groom",waShare:"Share reply on WhatsApp",copy:"Copy message",copied:"Copied",copyManual:"Select the text and copy it",
-  replyNote:"We only receive your reply once you press send inside WhatsApp.",edit:"Edit my reply",
   footNames:"Mostafa & Rania",
   musicLabel:"Play or pause the music",prevLabel:"Previous photo",nextLabel:"Next photo",langBtn:"عربي",
-  calTitle:"Mostafa & Rania's Wedding",calText:"You are invited to Mostafa and Rania's wedding",
-  msg:function(o){
-    var d="Saturday, 24 October 2026";
-    var s=o.att?("Hello, this is "+o.name+". I am happy to confirm that I will attend Mostafa and Rania's wedding on "+d+" (guests: "+o.n+")."):("Hello, this is "+o.name+". I am sorry that I will not be able to attend Mostafa and Rania's wedding on "+d+". I wish you both a happy life together.");
-    return s+(o.note?"\n"+o.note:"");
-  }
+  calTitle:"Mostafa & Rania's Wedding",calText:"You are invited to Mostafa and Rania's wedding"
  }
 };
 
 var lang="ar";
 try{var sv=localStorage.getItem("lang");if(sv==="ar"||sv==="en")lang=sv}catch(e){}
-function num(v,pad){var s=String(v);if(pad&&s.length<2)s="0"+s;return lang==="ar"?s.replace(/\d/g,function(d){return "٠١٢٣٤٥٦٧٨٩".charAt(+d)}):s}
+function num(v,pad){var s=String(v);if(pad&&s.length<2)s="0"+s;return lang==="ar"?s.replace(/\d/g,function(d){return "٠١٢٣٤٥٦terr".charAt(+d)}):s}
 
-/* ---- language ---- */
 function applyLang(l){
   lang=l;var d=T[l];
   document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";
@@ -472,12 +437,10 @@ function applyLang(l){
   if(!$("#winMsg").hidden)$("#winMsg").textContent=d.winMsg;
   renderCount();buildCountShell();renderCount();
   if(inviteOpen)jumpTo(galIdx);
-  if(!$("#reply").hidden)buildReply();
   try{localStorage.setItem("lang",l)}catch(e){}
 }
 $("#langBtn").addEventListener("click",function(){applyLang(lang==="ar"?"en":"ar")});
 
-/* ---- music ---- */
 var audio=$("#song"),wantMusic=false,resume=false;
 function syncMusic(){
   $("#musicBtn").setAttribute("aria-pressed",wantMusic?"true":"false");
@@ -495,7 +458,6 @@ document.addEventListener("visibilitychange",function(){
   else if(resume&&wantMusic){resume=false;audio.play().catch(function(){})}
 });
 
-/* ---- effects: drifting petals + heart burst ---- */
 var pc=$("#petals"),bc=$("#burst"),pctx=pc.getContext("2d"),bctx=bc.getContext("2d");
 var VW=0,VH=0,DPR=Math.min(window.devicePixelRatio||1,2);
 var petals=[],hearts=[];
@@ -543,7 +505,6 @@ function stepFx(dt,t){
   bctx.globalAlpha=1;
 }
 
-/* ---- maze ---- */
 var COLS=8,ROWS=11,PAD=8;
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 var cells=[];
@@ -581,7 +542,7 @@ function solve(sx,sy){
   path.push([sx,sy]);return path.reverse();
 }
 var cv=$("#maze"),ctx=cv.getContext("2d"),cs=40,CW=0,CH=0;
-var imgG=new Image(),imgB=new Image();imgG.src="./img/groom.jpg";imgB.src="./img/bride.jpg";
+var imgG=new Image(),imgB=new Image();imgG.src="groom.jpg";imgB.src="bride.jpg";
 var cx=0,cy=0,ax=0,ay=0,trail=[[0,0]],won=false,mazeActive=false,hintUntil=0,hintPath=null;
 var col={wall:"#EBB7C1",trail:"rgba(217,130,148,.5)",gold:"#C9A66B",blush:"#EBB7C1"};
 function readCols(){
@@ -607,21 +568,18 @@ function drawMaze(t,dt){
   var k=1-Math.exp(-dt*16);ax+=(cx-ax)*k;ay+=(cy-ay)*k;
   ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,CW,CH);
   ctx.lineCap="round";ctx.lineJoin="round";
-  /* trail */
   if(trail.length>0){
     ctx.strokeStyle=col.trail;ctx.lineWidth=cs*.26;ctx.beginPath();
     ctx.moveTo(ccx(trail[0][0]),ccx(trail[0][1]));
     for(var i=1;i<trail.length;i++)ctx.lineTo(ccx(trail[i][0]),ccx(trail[i][1]));
     ctx.lineTo(ccx(ax),ccx(ay));ctx.stroke();
   }
-  /* hint */
   if(hintPath&&t<hintUntil){
     ctx.save();ctx.globalAlpha=Math.min(1,(hintUntil-t)/600);ctx.strokeStyle=col.gold;ctx.lineWidth=4;ctx.setLineDash([1,cs*.2]);ctx.beginPath();
     ctx.moveTo(ccx(hintPath[0][0]),ccx(hintPath[0][1]));
     for(var h=1;h<hintPath.length;h++)ctx.lineTo(ccx(hintPath[h][0]),ccx(hintPath[h][1]));
     ctx.stroke();ctx.restore();
   }
-  /* walls */
   ctx.save();ctx.strokeStyle=col.wall;ctx.lineWidth=Math.max(2,cs*.07);ctx.shadowColor="rgba(235,183,193,.45)";ctx.shadowBlur=6;ctx.beginPath();
   for(var y=0;y<ROWS;y++)for(var x=0;x<COLS;x++){
     var c=cells[y*COLS+x],x0=PAD+x*cs,y0=PAD+y*cs;
@@ -631,12 +589,10 @@ function drawMaze(t,dt){
     if(y===ROWS-1&&c.S){ctx.moveTo(x0,y0+cs);ctx.lineTo(x0+cs,y0+cs)}
   }
   ctx.stroke();ctx.restore();
-  /* bride (goal) */
   var gx=ccx(COLS-1),gy=ccx(ROWS-1),R=cs*.4,pulse=1+.07*Math.sin(t/320);
   ctx.save();ctx.globalAlpha=.35;ctx.strokeStyle=col.blush;ctx.lineWidth=2;ctx.beginPath();ctx.arc(gx,gy,R*1.35*pulse,0,6.283);ctx.stroke();ctx.restore();
   avatar(imgB,gx,gy,R,col.blush);
   if(!won){ctx.fillStyle="#D98294";heartPath(ctx,gx,gy-R-8-Math.sin(t/380)*2.5,cs*.13);ctx.fill()}
-  /* groom */
   avatar(imgG,ccx(ax),ccx(ay),R,col.gold);
 }
 function step(dx,dy){
@@ -685,7 +641,6 @@ function win(){
   setTimeout(openInvite,3300);
 }
 
-/* ---- flow ---- */
 var intro=$("#intro"),mazeScr=$("#mazeScr");
 function showMaze(){
   intro.classList.add("off");mazeScr.classList.remove("off");mazeActive=true;layoutMaze();
@@ -703,7 +658,6 @@ function openInvite(){
   setupReveal();setupGallery();
 }
 
-/* ---- countdown ---- */
 var target=new Date(EVENT.startISO).getTime();
 function buildCountShell(){
   var d=T[lang],box=$("#count");if(!box)return;
@@ -723,7 +677,6 @@ function renderCount(){
   for(var i=0;i<4;i++)box.children[i].firstChild.textContent=num(v[i],i>0);
 }
 
-/* ---- reveal ---- */
 function setupReveal(){
   var els=$$(".rise");
   if(!("IntersectionObserver" in window))return;
@@ -735,7 +688,6 @@ function setupReveal(){
   });
 }
 
-/* ---- gallery ---- */
 var track=$("#track"),slides=$$(".slide"),dots=$("#dots"),galIdx=0,galVisible=false,galUser=false,galTimer=null;
 function sgn(){return document.documentElement.dir==="rtl"?-1:1}
 function jumpTo(i,smooth){
@@ -769,41 +721,26 @@ function setupGallery(){
   if("IntersectionObserver" in window){
     new IntersectionObserver(function(en){galVisible=en[0].isIntersecting},{threshold:.5}).observe($("#gal"));
   }
-  if(!RM)galTimer=setInterval(function(){if(galVisible&&!galUser&&!document.hidden)jumpTo(galIdx+1,true)},4500);
+  if(!RM)galTimer=setInterval(function(){if(galVisible&&!galUser&&!documenthidden)jumpTo(galIdx+1,true)},4500);
 }
 
-/* ---- RSVP ---- */
 var guests=1;
 function setGuests(n){guests=Math.max(1,Math.min(10,n));$("#gOut").textContent=num(guests)}
 $("#gMinus").addEventListener("click",function(){setGuests(guests-1)});
 $("#gPlus").addEventListener("click",function(){setGuests(guests+1)});
-function attending(){return $("#att-yes").checked}
-$$("input[name=att]").forEach(function(r){r.addEventListener("change",function(){$("#guestsBox").hidden=!attending()})});
-var lastMsg="";
-function buildReply(){
-  var name=$("#rsvp-name").value.trim(),note=$("#rsvp-msg").value.trim();
-  lastMsg=T[lang].msg({name:name,att:attending(),n:num(guests),note:note});
-  $("#replyText").value=lastMsg;
-  // WhatsApp normal links cannot send one message to several recipients automatically.
-  // This single share action opens WhatsApp with the reply prefilled; the guest selects recipients and presses Send.
-  var share=$("#waShareLink");
-  share.href="https://wa.me/201062311669?text="+encodeURIComponent(lastMsg);
-  share.textContent=T[lang].waShare;
-}
+
 $("#rsvpForm").addEventListener("submit",function(e){
   e.preventDefault();
-  if(!$("#rsvp-name").value.trim()){$("#rsvpErr").textContent=T[lang].errName;$("#rsvp-name").focus();return}
-  $("#rsvpErr").textContent="";buildReply();
-  $("#rsvpForm").hidden=true;$("#reply").hidden=false;
-});
-$("#editBtn").addEventListener("click",function(){$("#reply").hidden=true;$("#rsvpForm").hidden=false;$("#rsvp-name").focus()});
-$("#copyBtn").addEventListener("click",function(){
-  var b=$("#copyBtn"),ta=$("#replyText");
-  function done(ok){b.textContent=ok?T[lang].copied:T[lang].copyManual;if(!ok){ta.focus();ta.select()}setTimeout(function(){b.textContent=T[lang].copy},2200)}
-  try{navigator.clipboard.writeText(lastMsg).then(function(){done(true)},function(){done(false)})}catch(e){done(false)}
+  if(!$("#rsvp-name").value.trim()){
+    $("#rsvpErr").textContent=T[lang].errName;
+    $("#rsvp-name").focus();
+    return;
+  }
+  $("#rsvpErr").textContent="";
+  $("#rsvpForm").hidden=true;
+  $("#reply").hidden=false;
 });
 
-/* ---- boot ---- */
 applyLang(lang);setGuests(1);readCols();sizeFx();initPetals();layoutMaze();
 var rt=null;
 window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){sizeFx();initPetals();layoutMaze();if(inviteOpen)jumpTo(galIdx)},150)});
