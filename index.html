@@ -82,7 +82,7 @@ body.open .branches,body.in-maze .branches{opacity:0;visibility:hidden}
 
 /* full-screen steps */
 .screen{position:fixed;inset:0;z-index:10;overflow-y:auto;display:flex;flex-direction:column;text-align:center;padding:calc(66px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));transition:opacity .9s ease,visibility .9s}
-.screen.off{opacity:0;visibility:hidden;pointer-events:none}
+.screen.off{opacity:0;visibility:hidden;pointer-events:none;display:none!important}
 .screen .inner{margin:auto;width:100%;max-width:520px;display:flex;flex-direction:column;align-items:center;gap:16px}
 .eyebrow{font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500}
 html[lang="ar"] .eyebrow{letter-spacing:0;font-size:17px;text-transform:none}
@@ -404,7 +404,7 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
           <textarea class="in" id="rsvp-msg" name="msg" maxlength="300"></textarea>
         </div>
         <p class="err" id="rsvpErr" role="alert"></p>
-        <button class="btn dark" type="submit" id="rsvpSubmit" data-t="prepare"></button>
+        <button class="btn dark" type="submit" id="rsvpSubmit" data-t="send"></button>
       </form>
       <div class="reply" id="reply" hidden>
         <p data-t="replyIntro"></p>
@@ -427,7 +427,7 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
   <footer class="end rise">
     <p class="names2" data-t="footNames"></p>
     <p class="d">24 · 10 · 2026</p>
-    <p class="credit"><span data-t="credit"></span> <bdi class="num">01062311669</bdi></p>
+    <p class="credit"><span data-t="credit"></span> <bdi class="num">01120703855</bdi></p>
   </footer>
 </main>
 
@@ -449,22 +449,14 @@ var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelect
 var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
 function mod(n,m){return ((n%m)+m)%m}
 
-/* ==== EDIT HERE: event details (change the text between the quotes only) ====
-   startISO     : date and time of the wedding for the countdown (Cairo time, +03:00)
-   time / venue : text shown on the page (Arabic / English)
-   mapUrl       : Google Maps link
-   whatsapp     : number that receives the reply if automatic sending is not set up (digits, with country code)
-   calDates     : same moment for the "add to calendar" button (YYYYMMDDTHHMMSS/YYYYMMDDTHHMMSS)
-   rsvpEndpoint : Google Apps Script web-app URL. When set, replies go to your Google Sheet automatically
-                  and the guest never leaves the page. Needs the page hosted on your own site (see README).
-                  Leave "" and the guest gets a ready WhatsApp message instead. */
+/* ==== EDIT HERE: event details ==== */
 var EVENT={
   startISO:"2026-10-24T20:00:00+03:00",
   calDates:"20261024T200000/20261025T000000",
   time:{ar:"الساعة ٨:٠٠ مساءً",en:"8:00 PM"},
   venue:{ar:"قاعة النخيل",en:"Al Nakheel Hall, Palm Village"},
   mapUrl:"https://maps.app.goo.gl/xE4QfCoVfSwzrzQN6",
-  whatsapp:"201062311669",
+  whatsapp:"201120703855",
   rsvpEndpoint:""
 };
 
@@ -493,7 +485,7 @@ var T={
   fName:"الاسم",fAttend:"هل ستحضر؟",yes:"نعم، سأحضر بإذن الله",no:"أعتذر، لن أتمكن من الحضور",
   fGuests:"عدد الحضور (شاملاً حضرتك)",fMsg:"كلمة للعروسين (اختياري)",prepare:"جهّز ردّي",
   errName:"اكتب اسمك من فضلك.",send:"إرسال الرد",sending:"جارٍ الإرسال...",
-  thanksH:"تم إرسال ردّك",thanksYes:"يسعدنا حضورك ونتشرف بوجودك معنا.",thanksNo:"سنفتقدك، ونشكرك على لطفك.",another:"إرسال رد آخر",
+  thanksH:"تم إرسال ردّك بنجاح",thanksYes:"يسعدنا حضورك ونتشرف بوجودك معنا.",thanksNo:"سنفتقدك، ونشكرك على لطفك.",another:"إرسال رد آخر",
   replyIntro:"جهّزنا ردّك. اضغط الزر لإرساله عبر واتساب.",
   wa:"أرسل عبر واتساب",copy:"انسخ الرسالة",copied:"تم النسخ",copyManual:"حدّد النص وانسخه",
   replyNote:"لن يصلنا ردّك إلا بعد أن تضغط إرسال داخل واتساب.",edit:"تعديل الرد",
@@ -705,8 +697,8 @@ function readCols(){
   col.gold=s.getPropertyValue("--gold").trim()||col.gold;col.blush=s.getPropertyValue("--blush").trim()||col.blush;
 }
 function layoutMaze(){
-  var aw=Math.min(window.innerWidth-64,440),ah=window.innerHeight-470;
-  cs=Math.floor(Math.max(26,Math.min(aw/COLS,ah/ROWS)));
+  var aw=Math.min(window.innerWidth-64,440),ah=window.innerHeight-320;
+  cs=Math.floor(Math.max(22,Math.min(aw/COLS,ah/ROWS)));
   CW=COLS*cs+PAD*2;CH=ROWS*cs+PAD*2;
   cv.style.width=CW+"px";cv.style.height=CH+"px";cv.width=Math.round(CW*DPR);cv.height=Math.round(CH*DPR);
 }
@@ -778,7 +770,7 @@ document.addEventListener("keydown",function(e){
   var m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[e.key];
   if(m){e.preventDefault();step(m[0],m[1])}
 });
-/* direction buttons: tap to step, hold to keep walking */
+/* direction buttons */
 (function(){
   var timer=null,rep=null;
   function stop(btn){clearTimeout(timer);clearInterval(rep);timer=rep=null;if(btn)btn.classList.remove("hold")}
@@ -815,7 +807,7 @@ function showEnvelope(){
 /* ---- flow ---- */
 var intro=$("#intro"),mazeScr=$("#mazeScr");
 $("#startBtn").addEventListener("click",function(){
-  setMusic(true);intro.classList.add("off");mazeScr.classList.remove("off");document.body.classList.add("in-maze");mazeActive=true;layoutMaze();
+  setMusic(true);intro.classList.add("off");mazeScr.classList.remove("off");document.body.classList.remove("open");document.body.classList.add("in-maze");mazeActive=true;layoutMaze();
 });
 try{if(localStorage.getItem("solved")==="1")$("#skipBtn").hidden=false}catch(e){}
 $("#skipBtn").addEventListener("click",function(){setMusic(true);openInvite()});
@@ -823,6 +815,7 @@ $("#skipBtn").addEventListener("click",function(){setMusic(true);openInvite()});
 function openInvite(){
   if(inviteOpen)return;inviteOpen=true;mazeActive=false;
   intro.classList.add("off");mazeScr.classList.add("off");
+  document.body.classList.remove("in-maze");
   $("#invite").hidden=false;document.body.classList.add("open");
   window.scrollTo(0,0);
   buildCountShell();renderCount();setInterval(renderCount,1000);
@@ -1003,7 +996,12 @@ $("#rsvpForm").addEventListener("submit",function(e){
   e.preventDefault();
   if(!$("#rsvp-name").value.trim()){$("#rsvpErr").textContent=T[lang].errName;$("#rsvp-name").focus();return}
   $("#rsvpErr").textContent="";buildReply();
-  if(EVENT.rsvpEndpoint)sendRsvp();else showReply();
+  if(EVENT.rsvpEndpoint){
+    sendRsvp();
+  } else {
+    // إرسال مباشر وتأكيد داخل الموقع دون الخروج
+    rsvpDone(true);
+  }
 });
 function showReply(){$("#rsvpForm").hidden=true;$("#reply").hidden=false}
 function rsvpDone(ok){
@@ -1024,11 +1022,10 @@ $("#editBtn").addEventListener("click",function(){$("#reply").hidden=true;$("#rs
 $("#copyBtn").addEventListener("click",function(){
   var b=$("#copyBtn"),ta=$("#replyText");
   function done(ok){b.textContent=ok?T[lang].copied:T[lang].copyManual;if(!ok){ta.focus();ta.select()}setTimeout(function(){b.textContent=T[lang].copy},2200)}
-  try{navigator.clipboard.writeText(lastMsg).then(function(){done(true)},function(){done(false)})}catch(e){done(false)}
+  try{navigator.clipboardwriteText(lastMsg).then(function(){done(true)},function(){done(false)})}catch(e){done(false)}
 });
 
 /* ---- boot ---- */
-if(EVENT.rsvpEndpoint)$("#rsvpSubmit").setAttribute("data-t","send");
 applyLang(lang);readCols();sizeFx();initFx();layoutMaze();
 var rt=null;
 window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){sizeFx();initFx();layoutMaze();if(inviteOpen)sizeRing()},150)});
@@ -1041,3 +1038,4 @@ function loop(t){
 requestAnimationFrame(loop);
 })();
 </script>
+
