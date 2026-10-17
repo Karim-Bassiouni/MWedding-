@@ -1,9 +1,12 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>زفاف مصطفى ورانيا</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap">
 <style>
-/* Layout: a dark-green night scene taken from the wedding decor (green velvet, pink blossom).
-   Intro -> hand-drawn-feel maze -> scrolling invitation on ivory paper cards. */
 :root{
   --bg:#13231A;
   --bg-lift:#223f2e;
@@ -55,7 +58,6 @@ canvas.fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
 #petals{z-index:0}
 #burst{z-index:30}
 
-/* top controls */
 .bar{
   position:fixed;z-index:40;direction:ltr;pointer-events:none;
   top:calc(10px + env(safe-area-inset-top,0px));
@@ -75,7 +77,6 @@ canvas.fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
 .pill svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .pill[aria-pressed="true"]{border-color:var(--blush);color:var(--blush)}
 
-/* full-screen steps */
 .screen{
   position:fixed;inset:0;z-index:10;overflow-y:auto;display:flex;flex-direction:column;text-align:center;
   padding:calc(70px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));
@@ -115,7 +116,6 @@ html[lang="en"] .nm{font-style:italic;font-weight:500;line-height:1}
 .screen:not(.off) .a1{animation-delay:.1s}.screen:not(.off) .a2{animation-delay:.3s}.screen:not(.off) .a3{animation-delay:.55s}
 .screen:not(.off) .a4{animation-delay:.8s}.screen:not(.off) .a5{animation-delay:1.05s}.screen:not(.off) .a6{animation-delay:1.3s}
 
-/* maze */
 .maze-title{font-family:var(--disp);font-size:clamp(30px,8vw,42px);line-height:1.4;color:var(--ivory);font-weight:700}
 html[lang="en"] .maze-title{font-style:italic;font-weight:500;line-height:1.15}
 .card-maze{padding:10px;border-radius:22px;border:1px solid var(--line);background:rgba(247,239,230,.045);box-shadow:0 22px 60px rgba(0,0,0,.3)}
@@ -125,7 +125,6 @@ html[lang="en"] .maze-title{font-style:italic;font-weight:500;line-height:1.15}
 .win{font-family:var(--disp);font-size:26px;color:var(--blush);line-height:1.5}
 html[lang="en"] .win{font-style:italic}
 
-/* invitation */
 #invite{position:relative;z-index:1;max-width:640px;margin:0 auto;padding-top:calc(74px + env(safe-area-inset-top,0px))}
 .sec{padding-block:44px;text-align:center}
 .arch{
@@ -160,7 +159,6 @@ a.btn{text-decoration:none;display:inline-block}
 .rw dd.tbd{color:var(--ink-dim);font-size:16px}
 .paper .row-btns{justify-content:center}
 
-/* gallery */
 .gal{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;max-width:520px;margin:0 auto;background:#0d1812;box-shadow:0 0 0 1px var(--line),0 24px 60px rgba(0,0,0,.4)}
 .track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .track::-webkit-scrollbar{display:none}
@@ -178,7 +176,6 @@ html[dir="rtl"] .nav svg{transform:scaleX(-1)}
 .dots button{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:rgba(247,239,230,.3);cursor:pointer;transition:all .3s}
 .dots button[aria-current="true"]{background:var(--blush);width:26px;border-radius:5px}
 
-/* rsvp */
 form{display:grid;gap:20px}
 label.fl,.fl{display:block;font-size:15px;font-weight:500;margin-bottom:8px;color:var(--ink)}
 .in{width:100%;border:1px solid #d6c8b4;background:#fffdf9;border-radius:14px;padding:13px 15px;font:inherit;font-size:17px;color:var(--ink);line-height:1.5}
@@ -194,14 +191,15 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .stepper button:hover{background:#f3e9da}
 .stepper output{min-width:54px;text-align:center;font-size:20px;font-variant-numeric:tabular-nums}
 .err{color:#9a2c43;font-size:15px;min-height:1.4em}
-.reply{display:grid;gap:14px;text-align:center;padding:20px 0}
-.reply .success-msg{font-size:22px;font-weight:bold;color:var(--ink)}
+.reply{display:grid;gap:14px;text-align:center}
+.reply textarea{width:100%;min-height:120px;border:1px solid #d6c8b4;border-radius:14px;background:#fffdf9;padding:13px 15px;font:inherit;font-size:16px;color:var(--ink);line-height:1.7;text-align:start}
+.reply .note{color:var(--ink-dim);font-size:15px}
+.reply a.btn{text-decoration:none;display:inline-block}
 footer.end{padding:48px 0 calc(56px + env(safe-area-inset-bottom,0px));text-align:center}
 footer.end .names2{font-family:var(--disp);font-size:34px;color:var(--ivory)}
 html[lang="en"] footer.end .names2{font-style:italic}
 footer.end .d{margin-top:6px;color:var(--gold);letter-spacing:.2em;font-size:14px}
 
-/* reveal */
 .rise{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 .rise.pre{opacity:0;transform:translateY(26px)}
 body.open .ha{animation:up 1s cubic-bezier(.2,.7,.2,1) both}
@@ -212,6 +210,8 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
 }
 @media (max-width:380px){.rw{grid-template-columns:1fr;gap:2px}.cd b{font-size:26px}}
 </style>
+</head>
+<body>
 
 <audio id="song" src="song.mp3" loop preload="metadata"></audio>
 <canvas class="fx" id="petals" aria-hidden="true"></canvas>
@@ -332,11 +332,17 @@ body.open .ha1{animation-delay:.2s}body.open .ha2{animation-delay:.45s}body.open
           <textarea class="in" id="rsvp-msg" name="msg" maxlength="300"></textarea>
         </div>
         <p class="err" id="rsvpErr" role="alert"></p>
-        <button class="btn dark" type="submit" data-t="prepare">إرسال الرسالة</button>
+        <button class="btn dark" type="submit" data-t="prepare"></button>
       </form>
       <div class="reply" id="reply" hidden>
-        <p class="success-msg">تم الإرسال بنجاح! ❤️</p>
-        <p>شكراً لمشاركتك فرحتنا، سعداء جداً بتواصلك معنا.</p>
+        <p data-t="replyIntro"></p>
+        <textarea id="replyText" readonly aria-label="message"></textarea>
+        <div class="row-btns" id="waLinks">
+          <a class="btn dark sm" id="waShareLink" target="_blank" rel="noopener" data-t="waShare"></a>
+          <button class="btn light sm" id="copyBtn" type="button" data-t="copy"></button>
+        </div>
+        <p class="note" data-t="replyNote"></p>
+        <button class="link" id="editBtn" type="button" style="color:var(--ink-dim)" data-t="edit"></button>
       </div>
     </div>
   </section>
@@ -359,7 +365,8 @@ var EVENT={
   calDates:"20261024T200000/20261025T000000",
   time:{ar:"الساعة ٨:٠٠ مساءً",en:"8:00 PM"},
   venue:{ar:"قاعة النخيل",en:"Al Nakheel Hall, Palm Village"},
-  mapUrl:"https://maps.app.goo.gl/xE4QfCoVfSwzrzQN6"
+  mapUrl:"https://maps.app.goo.gl/xE4QfCoVfSwzrzQN6",
+  whatsapp:["201062311669"]
 };
 
 var T={
@@ -382,11 +389,19 @@ var T={
   galH:"لحظاتنا",galSub:"بعض من أجمل ما جمعنا",galAlt:"صورة ",
   rsvpH:"تأكيد الحضور",rsvpSub:"يسعدنا أن نعرف إن كنتم ستشاركوننا هذا اليوم.",
   fName:"الاسم",fAttend:"هل ستحضر؟",yes:"نعم، سأحضر بإذن الله",no:"أعتذر، لن أتمكن من الحضور",
-  fGuests:"عدد الحضور (شاملاً حضرتك)",fMsg:"كلمة للعروسين (اختياري)",prepare:"إرسال الرسالة",
+  fGuests:"عدد الحضور (شاملاً حضرتك)",fMsg:"كلمة للعروسين (اختياري)",prepare:"جهّز ردّي",
   errName:"اكتب اسمك من فضلك.",
+  replyIntro:"جهّزنا ردّك. اضغط الزر لإرساله عبر واتساب.",
+  waShare:"مشاركة الرد عبر واتساب",copy:"انسخ الرسالة",copied:"تم النسخ",copyManual:"حدّد النص وانسخه",
+  replyNote:"لن يصلنا ردّك إلا بعد أن تضغط إرسال داخل واتساب.",edit:"تعديل الرد",
   footNames:"مصطفى ورانيا",
   musicLabel:"تشغيل أو إيقاف الموسيقى",prevLabel:"الصورة السابقة",nextLabel:"الصورة التالية",langBtn:"EN",
-  calTitle:"زفاف مصطفى ورانيا",calText:"دعوة لحضور زفاف مصطفى ورانيا"
+  calTitle:"زفاف مصطفى ورانيا",calText:"دعوة لحضور زفاف مصطفى ورانيا",
+  msg:function(o){
+    var d="السبت ٢٤ أكتوبر ٢٠٢٦";
+    var s=o.att?("السلام عليكم، أنا "+o.name+". يسعدني تأكيد حضوري لزفاف مصطفى ورانيا يوم "+d+" (عدد الحضور: "+o.n+")."):("السلام عليكم، أنا "+o.name+". أعتذر لعدم تمكني من حضور زفاف مصطفى ورانيا يوم "+d+"، وأتمنى لكما حياة سعيدة.");
+    return s+(o.note?"\n"+o.note:"");
+  }
  },
  en:{
   eyebrow:"Wedding invitation",groom:"Mostafa",bride:"Rania",
@@ -407,17 +422,29 @@ var T={
   galH:"Our Moments",galSub:"A few of our favourites",galAlt:"Photo ",
   rsvpH:"RSVP",rsvpSub:"We would love to know if you will join us.",
   fName:"Your name",fAttend:"Will you attend?",yes:"Joyfully accepting",no:"Regretfully declining",
-  fGuests:"Number of guests (including you)",fMsg:"A note for the couple (optional)",prepare:"Send Message",
+  fGuests:"Number of guests (including you)",fMsg:"A note for the couple (optional)",prepare:"Prepare my reply",
   errName:"Please enter your name.",
+  replyIntro:"Your reply is ready. Tap the button to send it on WhatsApp.",
+  waShare:"Share reply on WhatsApp",copy:"Copy message",copied:"Copied",copyManual:"Select the text and copy it",
+  replyNote:"We only receive your reply once you press send inside WhatsApp.",edit:"Edit my reply",
   footNames:"Mostafa & Rania",
   musicLabel:"Play or pause the music",prevLabel:"Previous photo",nextLabel:"Next photo",langBtn:"عربي",
-  calTitle:"Mostafa & Rania's Wedding",calText:"You are invited to Mostafa and Rania's wedding"
+  calTitle:"Mostafa & Rania's Wedding",calText:"You are invited to Mostafa and Rania's wedding",
+  msg:function(o){
+    var d="Saturday, 24 October 2026";
+    var s=o.att?("Hello, this is "+o.name+". I am happy to confirm that I will attend Mostafa and Rania's wedding on "+d+" (guests: "+o.n+")."):("Hello, this is "+o.name+". I am sorry that I will not be able to attend Mostafa and Rania's wedding on "+d+". I wish you both a happy life together.");
+    return s+(o.note?"\n"+o.note:"");
+  }
  }
 };
 
 var lang="ar";
 try{var sv=localStorage.getItem("lang");if(sv==="ar"||sv==="en")lang=sv}catch(e){}
-function num(v,pad){var s=String(v);if(pad&&s.length<2)s="0"+s;return lang==="ar"?s.replace(/\d/g,function(d){return "٠١٢٣٤٥٦terr".charAt(+d)}):s}
+function num(v,pad){
+  var s=String(v);
+  if(pad&&s.length<2)s="0"+s;
+  return lang==="ar"?s.replace(/\d/g,function(d){return "٠١٢٣٤٥٦٧٨٩".charAt(+d)}):s;
+}
 
 function applyLang(l){
   lang=l;var d=T[l];
@@ -437,6 +464,7 @@ function applyLang(l){
   if(!$("#winMsg").hidden)$("#winMsg").textContent=d.winMsg;
   renderCount();buildCountShell();renderCount();
   if(inviteOpen)jumpTo(galIdx);
+  if(!$("#reply").hidden)buildReply();
   try{localStorage.setItem("lang",l)}catch(e){}
 }
 $("#langBtn").addEventListener("click",function(){applyLang(lang==="ar"?"en":"ar")});
@@ -721,24 +749,35 @@ function setupGallery(){
   if("IntersectionObserver" in window){
     new IntersectionObserver(function(en){galVisible=en[0].isIntersecting},{threshold:.5}).observe($("#gal"));
   }
-  if(!RM)galTimer=setInterval(function(){if(galVisible&&!galUser&&!documenthidden)jumpTo(galIdx+1,true)},4500);
+  if(!RM)galTimer=setInterval(function(){if(galVisible&&!galUser&&!document.hidden)jumpTo(galIdx+1,true)},4500);
 }
 
 var guests=1;
 function setGuests(n){guests=Math.max(1,Math.min(10,n));$("#gOut").textContent=num(guests)}
 $("#gMinus").addEventListener("click",function(){setGuests(guests-1)});
 $("#gPlus").addEventListener("click",function(){setGuests(guests+1)});
-
+function attending(){return $("#att-yes").checked}
+$$("input[name=att]").forEach(function(r){r.addEventListener("change",function(){$("#guestsBox").hidden=!attending()})});
+var lastMsg="";
+function buildReply(){
+  var name=$("#rsvp-name").value.trim(),note=$("#rsvp-msg").value.trim();
+  lastMsg=T[lang].msg({name:name,att:attending(),n:num(guests),note:note});
+  $("#replyText").value=lastMsg;
+  var share=$("#waShareLink");
+  share.href="https://wa.me/201062311669?text="+encodeURIComponent(lastMsg);
+  share.textContent=T[lang].waShare;
+}
 $("#rsvpForm").addEventListener("submit",function(e){
   e.preventDefault();
-  if(!$("#rsvp-name").value.trim()){
-    $("#rsvpErr").textContent=T[lang].errName;
-    $("#rsvp-name").focus();
-    return;
-  }
-  $("#rsvpErr").textContent="";
-  $("#rsvpForm").hidden=true;
-  $("#reply").hidden=false;
+  if(!$("#rsvp-name").value.trim()){$("#rsvpErr").textContent=T[lang].errName;$("#rsvp-name").focus();return}
+  $("#rsvpErr").textContent="";buildReply();
+  $("#rsvpForm").hidden=true;$("#reply").hidden=false;
+});
+$("#editBtn").addEventListener("click",function(){$("#reply").hidden=true;$("#rsvpForm").hidden=false;$("#rsvp-name").focus()});
+$("#copyBtn").addEventListener("click",function(){
+  var b=$("#copyBtn"),ta=$("#replyText");
+  function done(ok){b.textContent=ok?T[lang].copied:T[lang].copyManual;if(!ok){ta.focus();ta.select()}setTimeout(function(){b.textContent=T[lang].copy},2200)}
+  try{navigator.clipboard.writeText(lastMsg).then(function(){done(true)},function(){done(false)})}catch(e){done(false)}
 });
 
 applyLang(lang);setGuests(1);readCols();sizeFx();initPetals();layoutMaze();
@@ -753,3 +792,5 @@ function loop(t){
 requestAnimationFrame(loop);
 })();
 </script>
+</body>
+</html>
